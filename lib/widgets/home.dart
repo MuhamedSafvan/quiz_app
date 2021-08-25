@@ -7,7 +7,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-List questions = [
+  List questions = [
     {
       "question": "Which is the national animal?",
       "option_a": "Tiger",
@@ -91,108 +91,114 @@ List questions = [
           wrongCount += 1;
         });
       }
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ResultPage()),
-      );
-      var rightAnswer = rightCount;
-      var total = questions.length;
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => ResultPage()),
+      // );
+      // var rightAnswer = rightCount;
+      // var total = questions.length;
 
-      reset();
+      // reset();
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueGrey[900],
-        body: Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(17),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                color: Colors.white,
-                padding: EdgeInsets.all(9),
-                margin: EdgeInsets.all(9),
+      backgroundColor: Colors.blueGrey[900],
+      body: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(17),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.all(9),
+              margin: EdgeInsets.all(9),
+              child: Text(
+                "${questions[index]['question']}",
+                style: TextStyle(fontSize: 25),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              width: double.infinity,
+              height: 40,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
+                onPressed: () {
+                  numb++;
+                  numb > questions.length
+                      ? SizedBox()
+                      : checkAnswer(questions[index]['option_a']);
+                },
                 child: Text(
-                  "${questions[index]['question']}",
-                  style: TextStyle(fontSize: 25),
-                  textAlign: TextAlign.center,
+                  "${questions[index]['option_a']}",
+                  style: TextStyle(fontSize: 15),
                 ),
               ),
-              SizedBox(
-                height: 12,
-              ),
-              Container(
-                width: double.infinity,
-                height: 40,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
-                  onPressed: () {
-                    numb++;
-                    numb > questions.length
-                        ? SizedBox()
-                        : checkAnswer(questions[index]['option_a']);
-                  },
-                  child: Text(
-                    "${questions[index]['option_a']}",
-                    style: TextStyle(fontSize: 15),
-                  ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              width: double.infinity,
+              height: 40,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
+                onPressed: () {
+                  numb++;
+                  numb > questions.length
+                      ? SizedBox()
+                      : checkAnswer(questions[index]['option_b']);
+                },
+                child: Text(
+                  "${questions[index]['option_b']}",
+                  style: TextStyle(fontSize: 15),
                 ),
               ),
-              SizedBox(
-                height: 12,
-              ),
-              Container(
-                width: double.infinity,
-                height: 40,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
-                  onPressed: () {
-                    numb++;
-                    numb > questions.length
-                        ? SizedBox()
-                        : checkAnswer(questions[index]['option_b']);
-                  },
-                  child: Text(
-                    "${questions[index]['option_b']}",
-                    style: TextStyle(fontSize: 15),
-                  ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              width: double.infinity,
+              height: 40,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
+                onPressed: () {
+                  numb++;
+                  numb > questions.length
+                      ? SizedBox()
+                      : checkAnswer(questions[index]['option_c']);
+                },
+                child: Text(
+                  "${questions[index]['option_c']}",
+                  style: TextStyle(fontSize: 15),
                 ),
               ),
-              SizedBox(
-                height: 12,
-              ),
-              Container(
-                width: double.infinity,
-                height: 40,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
-                  onPressed: () {
-                    numb++;
-                    numb > questions.length
-                        ? SizedBox()
-                        : checkAnswer(questions[index]['option_c']);
-                  },
-                  child: Text(
-                    "${questions[index]['option_c']}",
-                    style: TextStyle(fontSize: 15),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "Total: ${questions.length} - Right: $rightCount - Wrong: $wrongCount",
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Total: ${questions.length} - Right: $rightCount - Wrong: $wrongCount",
+              style: TextStyle(color: Colors.white),
+            ),
+            TextButton(
+              onPressed: () {
+                reset();
+              },
+              child: Text("Reset", style: TextStyle(color: Colors.white)),
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 }

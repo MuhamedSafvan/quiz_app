@@ -30,10 +30,10 @@ class ResultPage extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  Text(
-                    "$rightAnswer",
-                    style: TextStyle(fontSize: 30),
-                  ),
+                  // Text(
+                  //   "$rightAnswer",
+                  //   style: TextStyle(fontSize: 30),
+                  // ),
                 ]),
           ),
         ),
